@@ -2,6 +2,26 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta name="facebook-domain-verification" content="tparlfn18oejtn72qvuwyjrsczamwh" />
+  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1660504892391997');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1660504892391997&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YourSite</title>
 <meta name="description" content="Criação de sites e landing pages profissionais com estratégia, design e copy, entregues em até 7 dias. Projetos a partir de R$ 799.">
@@ -216,9 +236,9 @@ a:hover{color:var(--text)}
       </div>
     </div>
 
-    <div class="hero-visual" data-reveal="right" data-delay="160" style="order:3;position:relative;min-width:0;align-self:stretch;text-align:left;margin:{{ heroVisM }};margin-right:{{ heroBleed }}">
-      <div ref="{{ heroVisualRef }}" style="position:relative;height:{{ heroFill }}">
-        <div data-marquee-panel="" style="position:relative;height:{{ heroFill }};min-height:{{ heroPanelMinH }};overflow:hidden;border-radius:{{ heroPanelR }};background:var(--bg-alt);border:1px solid var(--line);border-right:0;padding:clamp(12px,1.6vw,20px) 0 clamp(12px,1.6vw,20px) clamp(12px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(10px,1.2vw,16px)">
+    <div class="hero-visual" data-reveal="right" data-delay="160" style="order:3;position:relative;min-width:0;align-self:stretch;text-align:left;margin:{{ heroVisM }};margin-right:{{ heroBleed }};min-height:{{ heroPanelMinH }}">
+      <div ref="{{ heroVisualRef }}" style="position:{{ heroVisPos }};inset:{{ heroVisInset }};height:{{ heroVisH }}">
+        <div data-marquee-panel="" style="position:relative;height:{{ heroFill }};overflow:hidden;border-radius:{{ heroPanelR }};background:var(--bg-alt);border:1px solid var(--line);border-right:0;padding:clamp(12px,1.6vw,20px) 0 clamp(12px,1.6vw,20px) clamp(12px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(10px,1.2vw,16px)">
           <sc-for list="{{ heroRows }}" as="row" hint-placeholder-count="2">
             <div data-marquee="" data-dir="{{ row.dir }}" style="flex:1;min-height:0;display:flex;gap:clamp(10px,1.2vw,16px);width:max-content;will-change:transform">
               <sc-for list="{{ row.items }}" as="it" hint-placeholder-count="5">
@@ -1458,7 +1478,9 @@ class Component extends DCLogic {
       heroVisM: isDesktop ? '0' : '8px 0 28px',
       heroBleed: '-' + this.heroBleedPx(vw) + 'px',
       heroPanelR: isDesktop ? '28px 0 0 28px' : '20px 0 0 20px',
-      heroCardW: isDesktop ? 'auto' : 'clamp(190px,52vw,270px)', heroFill: isDesktop ? '100%' : 'auto', heroPanelMinH: isDesktop ? '420px' : '0',
+      heroCardW: isDesktop ? 'auto' : 'clamp(190px,52vw,270px)', heroFill: isDesktop ? '100%' : 'auto',
+      // desktop: the parallax wrapper fills .hero-visual absolutely so every height below it is definite (Safari/WebKit)
+      heroVisPos: isDesktop ? 'absolute' : 'relative', heroVisInset: isDesktop ? '0' : 'auto', heroVisH: isDesktop ? 'auto' : 'auto', heroPanelMinH: isDesktop ? '420px' : '0',
       heroRows: [0].map((r) => ({ dir: 'right', items: Array.from({ length: HERO_SRC.length * 2 }, (_, i) => i + 1).map((n) => { const k = ((n - 1) % HERO_SRC.length) + 1; const src = '/assets/hero/projeto-' + HERO_SRC[k - 1] + '.webp'; const pi = Math.max(0, PROJECTS.findIndex((pr) => pr.src === src)); return { id: 'hero-pf-' + n, src, ph: 'Projeto 0' + k, go: (e) => { this.pfT0 = performance.now(); this.setState({ pfA: pi, pfMenu: false }); if (e && e.target && e.target.closest && e.target.closest('a')) return; const el = document.getElementById('projetos'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' }); } }; }) })),
       goProjects: (e) => { if (e && e.target && e.target.closest && e.target.closest('a')) return; const el = document.getElementById('projetos'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' }); },
       heroNoteW: isMobile ? '320px' : '260px',

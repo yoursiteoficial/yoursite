@@ -13,6 +13,10 @@ Site estático, sem etapa de build e sem dependências de npm. Pronto para GitHu
 - `vercel.json` — cache dos arquivos estáticos e cabeçalhos de segurança.
 - `robots.txt`, `favicon.ico`, `.gitignore`.
 
+## Meta Pixel
+O Pixel da Meta (ID 1660504892391997) e a verificação de domínio do Facebook estão no início do `<head>` do `index.html`,
+copiados sem alteração da versão em produção.
+
 ## Atualizar o repositório
 Substitua todo o conteúdo do repositório pelo conteúdo desta pasta (os arquivos ficam na raiz do repositório).
 Apague do repositório arquivos que não existem mais aqui, por exemplo `.image-slots.state.json` e as imagens
